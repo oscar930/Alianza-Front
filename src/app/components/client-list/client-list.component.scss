@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  mat-sidenav {
+    width: 250px;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .menu-title {
+    margin-left: 16px;
+    color: #666;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .button-group button {
+    margin-left: 10px;
+  }
+  
+  mat-sidenav-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+  width: 100%;
+}
+
+.mat-form-field.search-input {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.toolbar h2 {
+  font-size: 24px;
+  color: #1e88e5;
+  margin: 10px 0;
+}
+
+.menu-title{
+    font-size: 28px;
+    color: #1e88e5;
+    margin: 10px 0;
+}
+
+.mat-header-cell, .mat-cell {
+  text-align: left;
+  padding: 8px 16px;
+}
+
+mat-paginator {
+  margin-top: 10px;
+}
+

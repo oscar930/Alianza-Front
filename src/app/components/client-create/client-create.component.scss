@@ -1,0 +1,73 @@
+.client-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+
+  .modal-title {
+  text-align: center;
+  font-size: 24px;
+  color: #1976d2; // Azul Material elegante
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.client-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.snackbar-success {
+    background-color: #4caf50; // verde éxito
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .snackbar-error {
+    background-color: #f44336; // rojo error
+    color: #fff;
+    font-weight: 500;
+  }
+
+
+
+
+
+
+
+

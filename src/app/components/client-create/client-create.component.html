@@ -1,0 +1,44 @@
+<h2 class="modal-title">Create Client</h2>
+
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="client-form">
+  <div class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Shared Key</mat-label>
+      <input matInput formControlName="sharedKey" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Business ID</mat-label>
+      <input matInput formControlName="businessId" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startPicker" formControlName="startDate" required>
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" formControlName="endDate" required>
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="submit" [disabled]="clientForm.invalid">Create</button>
+    <button mat-raised-button color="warn" type="button" (click)="onClose()">Cancel</button>
+  </div>
+</form>
