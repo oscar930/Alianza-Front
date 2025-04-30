@@ -37,7 +37,7 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class ClientListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['sharedKey', 'businessId', 'email', 'phone', 'startDate', 'endDate'];
+  displayedColumns: string[] = ['sharedKey', 'businessId', 'email', 'phone', 'startDate', 'endDate','actions'];
   dataSource = new MatTableDataSource<Client>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
