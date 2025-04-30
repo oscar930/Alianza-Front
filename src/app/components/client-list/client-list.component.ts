@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -31,6 +32,7 @@ import { MatSort } from '@angular/material/sort';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
+    FormsModule,
     ClientCreateComponent
   ]
 })
@@ -40,6 +42,7 @@ export class ClientListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private clientService: ClientService, private dialog: MatDialog) {}
+  showAdvancedSearch = false;
 
   ngOnInit(): void {
     this.loadClients();
@@ -54,6 +57,36 @@ export class ClientListComponent implements OnInit, AfterViewInit {
       this.dataSource.data = clients;
     });
   }
+
+  
+//Campos para realizar busqueda avanzada
+filterFields = [
+  { key: 'sharedKey', label: 'Shared Key', value: '' },
+  { key: 'businessId', label: 'Business ID', value: '' },
+  { key: 'email', label: 'Email', value: '' },
+  { key: 'phone', label: 'Phone', value: '' },
+  { key: 'startDate', label: 'Data Added', value: '' },
+  { key: 'endDate', label: 'End Date', value: '' }
+];
+
+toggleAdvancedSearch(): void {
+  this.showAdvancedSearch = !this.showAdvancedSearch;
+}
+
+applyAllFilters(): void {
+  const filters = this.filterFields.reduce((acc, field) => {
+    if (field.value.trim()) {
+      acc[field.key] = field.value.trim();
+    }
+    return acc;
+  }, {} as { [key: string]: string });
+
+  this.clientService.searchClients(filters).subscribe(clients => {
+    this.dataSource.data = clients;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  });
+}
 
   onCreate(): void {
     const dialogRef = this.dialog.open(ClientCreateComponent, {
@@ -71,17 +104,20 @@ export class ClientListComponent implements OnInit, AfterViewInit {
 
 
 
+
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  
 
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSource.filterPredicate = (data: Client, filter: string) =>
       data.sharedKey.toLowerCase().includes(filter);
+    this.dataSource.filter = filterValue;
   }
 
   onExport(): void {

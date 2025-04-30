@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Client } from '../models/client';
 
@@ -13,6 +13,19 @@ export class ClientService {
 
   getClients(): Observable<Client[]> {
     return this.http.get<Client[]>(this.apiUrl);
+  }
+
+  searchClients(filters: { [key: string]: string }): Observable<Client[]> {
+    let params = new HttpParams();
+  
+    // Agrega solo los filtros que tengan valor
+    Object.keys(filters).forEach(key => {
+      if (filters[key]) {
+        params = params.set(key, filters[key]);
+      }
+    });
+  
+    return this.http.get<Client[]>(`${this.apiUrl}/search-all`, { params });
   }
 
   createClient(client: Client): Observable<Client> {

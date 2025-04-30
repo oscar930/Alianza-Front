@@ -72,3 +72,38 @@ mat-paginator {
   margin-top: 10px;
 }
 
+.advanced-search {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .field-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+
+  .advanced-search {
+    margin: 1rem 0;
+  }
+  
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .field-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .small-field {
+    width: 150px;
+    min-width: 120px;
+  }

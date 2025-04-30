@@ -30,7 +30,33 @@
                 <mat-label>Buscar por Shared Key</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ej. AB123">
               </mat-form-field>
+
         </div>
+        <div class="button-group">
+        <button mat-button color="accent" (click)="toggleAdvancedSearch()">
+            <mat-icon>{{ showAdvancedSearch ? 'expand_less' : 'expand_more' }}</mat-icon>
+            {{ showAdvancedSearch ? 'Ocultar filtros avanzados' : 'Mostrar filtros avanzados' }}
+          </button>
+        </div>
+
+
+        <!-- Filtros avanzados -->
+        <div *ngIf="showAdvancedSearch" class="advanced-search">
+            <div class="filter-row">
+              <div class="field-group" *ngFor="let field of filterFields">
+                <mat-form-field appearance="outline" class="small-field">
+                  <mat-label>{{ field.label }}</mat-label>
+                  <input matInput [(ngModel)]="field.value" placeholder="{{ field.label }}">
+                </mat-form-field>
+              </div>
+              
+            </div>
+            <div class="button-group">
+            <button mat-raised-button color="primary" (click)="applyAllFilters()">Buscar</button>
+        </div>
+          </div>
+
+  <br>
 
           <div class="toolbar">
             <h2>Client List</h2>
